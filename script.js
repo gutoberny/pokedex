@@ -1,20 +1,20 @@
-const poke_container = document.getElementById('poke_container');
-const pokemons_number = 300;
+const poke_container    = document.getElementById('poke_container');
+const pokemons_number   = 300;
 const colors = {
-    fire: '#ff7f50',
-    grass: '#80ff80',
-    electric: '#ffff1a',
-    water: '#4dd2ff',
-    ground: '#ffd480',
-    rock: '#d5d5d4', 
-    fairy: '#fceaff',
-    poison: '#b84dff',
-    bug: '#ffd480',
-    dragon: '#97b3e6',
-    psychic: '#eaeda1',
-    flying: '#ccccff',
-    fighting: '#E6E0D4',
-    normal: '#F5F5F5'
+    fire:       '#ff7f50',
+    grass:      '#80ff80',
+    electric:   '#ffff1a',
+    water:      '#4dd2ff',
+    ground:     '#ffd480',
+    rock:       '#d5d5d4', 
+    fairy:      '#fceaff',
+    poison:     '#b84dff',
+    bug:        '#ffd480',
+    dragon:     '#97b3e6',
+    psychic:    '#eaeda1',
+    flying:     '#ccccff',
+    fighting:   '#E6E0D4',
+    normal:     '#F5F5F5'
 };
 
 const main_types = Object.keys(colors);
@@ -29,9 +29,9 @@ const fetchPokemons = async () => {
 
 
 const getPokemon = async id => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    const res = await fetch(url);
-    const pokemon = await res.json();
+    const url       = 'https://pokeapi.co/api/v2/pokemon/${id}';
+    const res       = await fetch(url);
+    const pokemon   = await res.json();
     createPokemonCard(pokemon);
 }
 
@@ -42,9 +42,9 @@ function createPokemonCard(pokemon){
     pokemonEl.classList.add('pokemon');
 
     const poke_types = pokemon.types.map(el => el.type.name);
-    const type = main_types.find(type => poke_types.indexOf(type) > -1);
-    const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-    const color = colors[type];
+    const type       = main_types.find(type => poke_types.indexOf(type) > -1);
+    const name       = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+    const color      = colors[type];
 
     pokemonEl.style.backgroundColor = color;
     const pokeInnerHTML = `
